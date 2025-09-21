@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>😂 Joke Generator</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(-45deg, #f6d365, #fda085, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+      text-align: center;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      display: inline-block;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-size: 1.2em;
+      color: #444;
+    }
+
+    select, input[type="number"] {
+      padding: 10px;
+      width: 220px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 1em;
+      transition: transform 0.2s ease;
+    }
+
+    select:focus, input[type="number"]:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(to right, #ee0979, #ff6a00);
+      transform: scale(1.1);
+    }
+
+    h3 {
+      margin-top: 30px;
+      font-size: 1.6em;
+      color: #5e35b1;
+      background: #fff3e0;
+      display: inline-block;
+      padding: 15px 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      animation: bounceIn 1s ease;
+    }
+
+    @keyframes bounceIn {
+      0% {transform: scale(0.8); opacity: 0;}
+      60% {transform: scale(1.1); opacity: 1;}
+      100% {transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <form method="get" action="/get-joke">
+    <label>🎭 Type:</label>
+    <select name="categories">
+      <option value="Any">Any</option>
+      <option value="Programming">Programming</option>
+      <option value="Misc">Misc</option>
+      <option value="Dark">Dark</option>
+      <option value="Pun">Pun</option>
+      <option value="Spooky">Spooky</option>
+      <option value="Christmas">Christmas</option>
+    </select>
+
+    <label>🚫 Filter Flags:</label>
+    <select name="blacklistFlags">
+      <option value="nsfw">nsfw</option>
+      <option value="religious">religious</option>
+      <option value="political">political</option>
+      <option value="racist">racist</option>
+      <option value="sexist">sexist</option>
+      <option value="explicit">explicit</option>
+    </select>
+
+    <label>🔢 Amount of jokes:</label>
+    <input type="number" name="amount"/>
+
+    <input type="submit" value="😂 Generate!"/>
+  </form>
+
+  <% try{if(jk!=undefined){%>
+  <h3>🤣 <%= jk %></h3>
+  <%}}catch(err){}%>
+</body>
+</html>
